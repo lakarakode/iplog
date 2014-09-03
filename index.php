@@ -37,8 +37,8 @@ function handleQuery() {
 
 	include 'connect.php';
 
-	//$qid = mysql_query("select * from iplog where syskey like '$syskey' order by updated desc limit 0, 10");
-	$qid = mysql_query("select ip.* from iplog ip left join iplog ip2 on (ip.syskey = ip2.syskey and ip.updated < ip2.updated) where ip2.id is null and ip.syskey like '$syskey' limit 0, 10");
+	//$qid = mysql_query("select * from iplog where syskey like '$syskey' order by updated desc limit 0, 50");
+	$qid = mysql_query("select ip.* from iplog ip left join iplog ip2 on (ip.syskey = ip2.syskey and ip.updated < ip2.updated) where ip2.id is null and ip.syskey like '$syskey' limit 0, 50");
 	$nums = mysql_num_rows($qid);
 	if ($nums == 0) {
 	   echo "Nothing known about syskey " . $syskey . "<br/>";
